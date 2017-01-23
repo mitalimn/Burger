@@ -2,6 +2,9 @@
 logs
 *.log
 npm-debug.log*
+#SQL File 
+*.sql
+connection.js
 
 # Runtime data
 pids
