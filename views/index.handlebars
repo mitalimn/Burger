@@ -14,23 +14,26 @@
 </head>
 
 <body>
-
+<!--  <img src="../public/assets/img/burger.png"/>  -->
 <div class="jumbotron text-center main-header">
       <h1>Eat da Burger</h1>
-        <h2>Enter your faorite Burger and hit Submit</h2>       
+        <h2>Enter your faorite Burger and hit Submit</h2>  
+
 </div>
 
 <div class="container">
   <div class="row main-body text-center">
   <form method="POST" action="/save" class="button-size">
     <div class="col-xs-9">
-	     <textarea type="text" cols = "80" rows="2" name="burger"></textarea>
+       <textarea type="text" cols = "80" rows="2" name="burger"></textarea>
     </div>
     <div class="col-xs-3 button">
      <a class="btn btn-primary btn-lg btn-default" href="/" role="button"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Submit</a> 
     </div>
   </form>
   </div><!-- row -->
+
+
 </div>
 
 
@@ -44,36 +47,6 @@
   </form>
 {{/each}}
 <div>
-
-
-
-
-<ul>
-  {{#each burgers}}
-    <li>
-      <p>
-        {{this.id}}. {{this.burger_name}}
-
-      </p>
-    </li>
-  {{/each}}
-</ul>
-
-
-<ul>
-  {{#each burgers}}
-    <li>
-      <p>
-        {{this.id}}. {{this.burger_name}}
-
-        <form action="/{{this.id}}?_method=DELETE" method="POST">
-          <input type="hidden" name="id" value="{{this.id}}">
-          <button type="submit">Delete</button>
-        </form>
-      </p>
-    </li>
-  {{/each}}
-</ul>
 
 </body>
 </html>
