@@ -4,7 +4,6 @@ logs
 npm-debug.log*
 #SQL File 
 *.sql
-connection.js
 
 # Runtime data
 pids
@@ -32,6 +31,8 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+
+config
 
 # Optional npm cache directory
 .npm

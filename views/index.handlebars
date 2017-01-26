@@ -1,3 +1,79 @@
-Setup the index.handlebars to have the template that Handlebars can render onto.
-Create a button in index.handlebars that will submit the user input into the database.
-Directory structure:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eat da Burger</title>
+
+<!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+   <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    
+    <!-- my styles -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/burger_style.css">
+</head>
+
+<body>
+
+<div class="jumbotron text-center main-header">
+      <h1>Eat da Burger</h1>
+        <h2>Enter your faorite Burger and hit Submit</h2>       
+</div>
+
+<div class="container">
+  <div class="row main-body text-center">
+  <form method="POST" action="/save" class="button-size">
+    <div class="col-xs-9">
+	     <textarea type="text" cols = "80" rows="2" name="burger"></textarea>
+    </div>
+    <div class="col-xs-3 button">
+     <a class="btn btn-primary btn-lg btn-default" href="/" role="button"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Submit</a> 
+    </div>
+  </form>
+  </div><!-- row -->
+</div>
+
+
+
+<div>
+{{#each burgers}}
+  <form action ="/update/{{id}}" method = "POST">
+    <div>{{id}}. {{burger_name}} 
+    <button type = "Submit"> Devour </button>
+    </div> 
+  </form>
+{{/each}}
+<div>
+
+
+
+
+<ul>
+  {{#each burgers}}
+    <li>
+      <p>
+        {{this.id}}. {{this.burger_name}}
+
+      </p>
+    </li>
+  {{/each}}
+</ul>
+
+
+<ul>
+  {{#each burgers}}
+    <li>
+      <p>
+        {{this.id}}. {{this.burger_name}}
+
+        <form action="/{{this.id}}?_method=DELETE" method="POST">
+          <input type="hidden" name="id" value="{{this.id}}">
+          <button type="submit">Delete</button>
+        </form>
+      </p>
+    </li>
+  {{/each}}
+</ul>
+
+</body>
+</html>
