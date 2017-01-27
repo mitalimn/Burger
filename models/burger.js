@@ -1,16 +1,31 @@
-var connection = require("../config/connection.js");
+//Here you set up the model for how
+//to interface with the database
 
-//code which queries the burger specific input 
+// Import the ORM to create functions that will interact with the database.
+var orm = require("../config/orm.js");
 
-app.get("/", function(req, res) {
-  connection.query("SELECT id, burger_name FROM burgers", function(err, data) {
-    if (err) {
-      throw err;
-    }
+var burger = {
+	all : function(cb){
+		// body...
+		orm.all('burgers', function(res){
+			cb(res);
+		});
+	},
 
-    res.render("/index", { burgers: data });
+	//cols and values are arrays
 
-  });
-});
+	create : function(cols, vals, cb){
+		orm.create('burgers',cols, vals, function(res){
+			cb(res);
+		})
+	},
+
+	update : function(objColVals, condition, cb){
+		orm.update('burgers', objColVals, condition, function(res){
+			cb(res);
+		})
+	}
+};//end burger object
+
 
 module.exports = burger;
