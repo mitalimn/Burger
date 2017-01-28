@@ -17,7 +17,7 @@
 <!--  <img src="../public/assets/img/burger.png"/>  -->
 <div class="jumbotron text-center main-header">
       <h1>Eat da Burger</h1>
-        <h2>Enter your faorite Burger and hit Submit</h2>
+        <h2>Enter your favorite Burger and hit Submit</h2>
 
 </div>
 
@@ -34,16 +34,33 @@
   </div><!-- row -->
 </div>
 
-
+<!-- //display all burger  -->
 <div>
 {{#each burgers}}
-  <form action ="/update/{{id}}" method = "POST">
+{{#unless this.devoured}}
+  <form action ="/update/{{id}}/?_method=PUT" method = "POST">
     <div>{{id}}. {{burger_name}}
     <button type = "Submit"> Devour </button>
+    <input type="hidden" name="burger_name" value="{{this.burger_name}}">
     </div>
   </form>
+  {{/unless}}
 {{/each}}
 <div>
 
+<!-- burger which are devoured -->
+  <ul>
+    {{#each burgers}}
+      {{#if this.devoured}}
+        <li>
+          {{this.id}}.{{this.burger_name}}
+
+          <form action="/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            </form>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
 </body>
 </html>
