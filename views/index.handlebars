@@ -17,6 +17,7 @@
 <!--  <img src="../public/assets/img/burger.png"/>  -->
 <div class="jumbotron text-center main-header">
       <h1>Eat da Burger</h1>
+      <img src="/assets/img/burger.png">
         <h2>Enter your favorite Burger and hit Submit</h2>
 
 </div>
@@ -38,21 +39,25 @@
 <div>
 {{#each burgers}}
 {{#unless this.devoured}}
-  <div>{{this.id}}. {{this.burger_name}}
-  <form action ="/update/{{id}}/?_method=PUT" method = "POST">
-
-    <button type = "Submit"> Devour </button>
-    <input type="hidden" name="devoured" value="true">
-  </form>
+<div>
+  <div class="col-xs-2 col-md-2">{{this.id}}. {{this.burger_name}}</div>
 </div>
-  {{/unless}}
+    <div class="col-xs-2 col-md-2">
+      <form action ="/update/{{id}}/?_method=PUT" method = "POST">
 
-  {{#if this.devoured}}
-    {{this.id}}. {{this.burger_name}}
-    {{/if}}
+        <button type = "Submit"> Devour It!! </button>
+        <input type="hidden" name="devoured" value="true">
+      </form>
+    </div>
+    <br>
+  {{/unless}}
+      {{#if this.devoured}}
+          <div class="col-xs-4 col-xs-offset-8">
+          <div class="devoured text-muted"> {{this.id}}. {{this.burger_name}}
+          </div>
+          </div>
+      {{/if}}
 {{/each}}
 <div>
-
-
 </body>
 </html>

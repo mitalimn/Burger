@@ -2,7 +2,7 @@
 logs
 *.log
 npm-debug.log*
-#SQL File 
+#SQL File
 *.sql
 
 # Runtime data
@@ -32,7 +32,6 @@ build/Release
 node_modules
 jspm_packages
 
-config
 
 # Optional npm cache directory
 .npm
