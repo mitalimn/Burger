@@ -1,27 +1,23 @@
 var mysql = require("mysql");
+var Sequelize = require("sequelize");
+
 
 var connection;
 
- connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  port : 3307,
-  database: "burgers_db"
-});
 
-//
-// if(process.env.JAWSDB_URL){
-//   connection=mysql.createConnection(process.env.JAWSDB_URL);
-// }
-// else {
-//   connection = mysql.createConnection({
-//     host : 'wp433upk59nnhpoh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-//     user : 's95fvl3jw5awf7fj',
-//     password : 'lbfbgmmb3t6z25td',
-//     port : 3306
-//   })
-// }
+
+if(process.env.JAWSDB_URL){
+  connection=mysql.createConnection(process.env.JAWSDB_URL);
+}
+else {
+  connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : 'root',
+    port : 3307,
+    database : 'burgers_db'
+  })
+}
 
 
 connection.connect(function(err) {
